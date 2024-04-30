@@ -1,0 +1,23 @@
+---
+ 
+layout: layouts/base.njk
+ 
+title: examples
+ 
+---
+
+<div class="examples-container">
+    <h2>实例</h2>
+    <div class="examples-grid">
+        {% for project in collections.examples %}
+            <div class="project-card">
+                <div class="project-header">
+                    <i class="fa-regular fa-folder-open folder-icon"></i>
+                </div>
+                <h3>{{ project.data.title }}</h3>
+                <p>{{ project.data.description }}</p>
+                <a href="{{ project.url }}" class="cta-btn">Read more</a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
