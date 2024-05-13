@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "eleventy --serve",
-    "build": "eleventy && node ./algolia-index.js"
+    "build": "eleventy"
   },
   "keywords": [],
   "author": "",
