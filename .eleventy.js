@@ -1,64 +1,71 @@
 module.exports = function (eleventyConfig) {
 
-	eleventyConfig.addPassthroughCopy('src/assets');
+    eleventyConfig.addPassthroughCopy('src/assets');
 
-	eleventyConfig.addPassthroughCopy('src/css');
+    eleventyConfig.addPassthroughCopy('src/css');
 
-	eleventyConfig.addWatchTarget('src/css');
+    eleventyConfig.addWatchTarget('src/css');
 
-	eleventyConfig.addCollection('projects', (collection) => {
+    eleventyConfig.addCollection('projects', (collection) => {
 
-		return collection.getFilteredByGlob('src/projects/main/*.md');
+        return collection.getFilteredByGlob('src/projects/main/*.md');
 
-	});
-	eleventyConfig.addCollection('seb', (collection) => {
+    });
+    eleventyConfig.addCollection('seb', (collection) => {
 
-		return collection.getFilteredByGlob('src/projects/seb/*.md');
+        return collection.getFilteredByGlob('src/projects/seb/*.md');
 
-	});
-	eleventyConfig.addCollection('msb', (collection) => {
+    });
+    eleventyConfig.addCollection('msb', (collection) => {
 
-		return collection.getFilteredByGlob('src/projects/msb/*.md');
+        return collection.getFilteredByGlob('src/projects/msb/*.md');
 
-	});
-	eleventyConfig.addCollection('ue', (collection) => {
+    });
+    eleventyConfig.addCollection('ue', (collection) => {
 
-		return collection.getFilteredByGlob('src/projects/ue/*.md');
+        return collection.getFilteredByGlob('src/projects/ue/*.md');
 
-	});
-	eleventyConfig.addCollection('que', (collection) => {
+    });
+    eleventyConfig.addCollection('que', (collection) => {
 
-		return collection.getFilteredByGlob('src/projects/que/*.md');
+        return collection.getFilteredByGlob('src/projects/que/*.md');
 
-	});
-	eleventyConfig.addCollection('rec', (collection) => {
+    });
+    eleventyConfig.addCollection('rec', (collection) => {
 
-		return collection.getFilteredByGlob('src/projects/rec/*.md');
+        return collection.getFilteredByGlob('src/projects/rec/*.md');
 
-	});
-	eleventyConfig.addCollection('sort', (collection) => {
+    });
+    eleventyConfig.addCollection('sort', (collection) => {
 
-		return collection.getFilteredByGlob('src/projects/sort/*.md');
+        return collection.getFilteredByGlob('src/projects/sort/*.md');
 
-	});
-	eleventyConfig.addCollection('examples', (collection) => {
+    });
+    eleventyConfig.addCollection('examples', (collection) => {
 
-		return collection.getFilteredByGlob('src/examples/main/*.md');
+        return collection.getFilteredByGlob('src/examples/main/*.md');
 
-	});
-	eleventyConfig.addShortcode('year', () => {
+    });
+    eleventyConfig.addShortcode('year', () => {
 
-		return `${new Date().getFullYear()}`;
+        return `${new Date().getFullYear()}`;
 
-	});
+    });
+    // 添加 Algolia 客户端库到全局数据
+    eleventyConfig.addGlobalData("algoliaAppId", "948WZAR6HZ");
+    eleventyConfig.addGlobalData("algoliaSearchApiKey", "109d6a2c0439fb03fab1a519fa8bff25");
 
-	return {
+    // 将 Algolia 客户端库添加到 watch 目标，以便在文件更改时重新构建
+    eleventyConfig.addWatchTarget("./src/assets/js/search.js");
 
-		dir: {
-			input: 'src',
-			output: 'public',
-		},
+    eleventyConfig.addPassthroughCopy({ "./src/assets/js/search.js": "./assets/js/search.js" });
+    return {
 
-	};
+        dir: {
+            input: 'src',
+            output: 'public',
+        },
+
+    };
 
 };

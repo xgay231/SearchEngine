@@ -1,0 +1,6 @@
+---
+layout: layouts/project.njk
+title : "排序的基本原理"
+---
+如图19.1所示，搜索引擎的链路上有三处需要做排序，它们分别是召回截断、粗排、 精排。精排的打分量较小，仅有数百，允许在单篇文档上花费很大的计算量。精排给每篇 文档打一个分数，这个分数基本决定了文档的最终曝光顺序。粗排的打分量为数千，在 单篇文档上花费的计算量必须远小于精排。粗排起到承上启下的作用，从数千候选文档 中选出数百，尽量保证用户最想看的文档不会被过滤掉。召回截断的打分量为数万，在 线上只能用向量内积这样的简单运算给数万文档打分，从中选出数千送入粗排。<br />![image.png](https://cdn.nlark.com/yuque/0/2024/png/39093873/1715010369823-8f2f71ce-b7dd-4f87-9d7e-62c9f64f0caa.png#averageHue=%23f7f7f7&clientId=ud6710115-4643-4&from=paste&height=194&id=uf5e0dc19&originHeight=194&originWidth=671&originalType=binary&ratio=1&rotation=0&showTitle=false&size=23068&status=done&style=none&taskId=u02da3895-58a3-4f1c-ac08-1d6526cd6db&title=&width=671)<br /> 
+精排、粗排、召回截断的原理基本相同。如图19.2所示，三种排序都是先用模型预 测相关性、点击率，再用模型融合相关性、内容质量、时效性、点击率、其他特征。融合 模型输出一个分数，按照这个分数对文档做排序。三处排序的区别在于相关性模型、点 击率模型、融合模型的规模与使用的特征。三处排序使用的内容质量和时效性特征是完 全相同的。 <br />![image.png](https://cdn.nlark.com/yuque/0/2024/png/39093873/1715010382300-ac55a970-2cad-420e-ad5b-ddc149d83b00.png#averageHue=%23d3bba3&clientId=ud6710115-4643-4&from=paste&height=262&id=u91a87181&originHeight=262&originWidth=686&originalType=binary&ratio=1&rotation=0&showTitle=false&size=28804&status=done&style=none&taskId=u12edd873-dd96-4588-8251-f37cb9d1b6b&title=&width=686) 

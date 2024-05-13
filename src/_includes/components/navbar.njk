@@ -4,15 +4,40 @@
             搜索引擎
         </a>
     </div>
-    <div class="nav">
-        <a href="/projects" class="link">
-            技术基础
-        </a>
-        <a href="/examples" class="link">
-            实例
-        </a>
-        <a href="/about" class="link">
-            ABOUT ME
-        </a>
+    <div class="search-box">
+        <input type="text" placeholder="搜索..." class="search-input">
+            <button class="search-button">搜索</button>
+        </div>
+        <div id="search-results"></div>
+        <div class="nav">
+            <a href="/projects" class="link">
+                技术基础
+            </a>
+            <a href="/examples" class="link">
+                实例
+            </a>
+            <a href="/about" class="link">
+                ABOUT ME
+            </a>
+        </div>
     </div>
-</div>
+    <style>
+        .search-box {
+            display: flex;
+            align-items: center;
+        }
+        .search-input {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .search-button {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+    <script src="assets/js/search.js"></script>
