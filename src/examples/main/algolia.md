@@ -3,6 +3,4 @@ layout: layouts/project.njk
 title: Algolia
 description: ""
 ---
-{% for algolia in collections.algolia %}
-- [{{algolia.data.title}}]({{algolia.url}})
-{% endfor %}
+事实上，导航栏的搜索就是基于Algolia的~
