@@ -1,3 +1,5 @@
+const searchFilter = require("./src/filters/searchFilter");
+
 module.exports = function (eleventyConfig) {
 
     eleventyConfig.addPassthroughCopy('src/assets');
@@ -51,13 +53,18 @@ module.exports = function (eleventyConfig) {
         return `${new Date().getFullYear()}`;
 
     });
+
+    eleventyConfig.addFilter("search", searchFilter);
+
+    eleventyConfig.addCollection("movies", collection => {
+        return [...collection.getFilteredByGlob("./src/**/*.md")];
+    });
+
     // 添加 Algolia 客户端库到全局数据
     eleventyConfig.addGlobalData("algoliaAppId", "948WZAR6HZ");
     eleventyConfig.addGlobalData("algoliaSearchApiKey", "109d6a2c0439fb03fab1a519fa8bff25");
-
     // 将 Algolia 客户端库添加到 watch 目标，以便在文件更改时重新构建
     eleventyConfig.addWatchTarget("./src/assets/js/search.js");
-
     eleventyConfig.addPassthroughCopy({ "./src/assets/js/search.js": "./assets/js/search.js" });
     return {
 

@@ -2,9 +2,9 @@
   "name": "11ty-portfolio",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": ".eleventy.js",
   "scripts": {
-    "start": "eleventy --serve",
+    "start": "rimraf _site && eleventy --serve",
     "build": "eleventy"
   },
   "keywords": [],
@@ -14,6 +14,8 @@
     "@11ty/eleventy": "^2.0.1"
   },
   "dependencies": {
-    "algoliasearch": "^4.23.3"
+    "algoliasearch": "^4.23.3",
+    "elasticlunr": "^0.9.5",
+    "rimraf": "^3.0.2"
   }
 }
