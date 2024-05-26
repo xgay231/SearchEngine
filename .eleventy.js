@@ -8,6 +8,11 @@ module.exports = function (eleventyConfig) {
 
     eleventyConfig.addWatchTarget('src/css');
 
+    eleventyConfig.addCollection('posts', (collection) => {
+
+        return collection.getFilteredByGlob('src/projects/**/*.md');
+
+    });
     eleventyConfig.addCollection('projects', (collection) => {
 
         return collection.getFilteredByGlob('src/projects/main/*.md');
