@@ -1,7 +1,7 @@
 ---
 layout: layouts/project.njk
 title: Lunr
-description: ""
+description: "基于 JavaScript 的本地搜索库，需要集成到网站或应用中，并在客户端浏览器中运行。"
 ---
 <div class="field">
     <label for="searchField">Search</label>
