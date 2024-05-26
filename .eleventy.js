@@ -59,7 +59,22 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addCollection("movies", collection => {
         return [...collection.getFilteredByGlob("./src/**/*.md")];
     });
+    
+	eleventyConfig.addPassthroughCopy("js");
 
+	eleventyConfig.addFilter('jsonify', function (variable) {
+		return JSON.stringify(variable);
+	});
+
+	// Remove <code>.*</code>, remove HTML, then with plain text, limit to 5k chars
+	eleventyConfig.addFilter('algExcerpt', function (text) {
+		//first remove code
+		text = text.replace(/<code class="language-.*?">.*?<\/code>/sg, '');
+		//now remove html tags
+		text = text.replace(/<.*?>/g, '');
+		//now limit to 5k
+		return text.substring(0,5000);
+	});
     // 添加 Algolia 客户端库到全局数据
     eleventyConfig.addGlobalData("algoliaAppId", "948WZAR6HZ");
     eleventyConfig.addGlobalData("algoliaSearchApiKey", "109d6a2c0439fb03fab1a519fa8bff25");
