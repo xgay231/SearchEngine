@@ -16,6 +16,8 @@
   "dependencies": {
     "algoliasearch": "^4.23.3",
     "elasticlunr": "^0.9.5",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "algolia-indexing": "^1.0.1",
+    "node-fetch": "^2.6.0"
   }
 }
